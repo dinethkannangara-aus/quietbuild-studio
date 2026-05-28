@@ -8,39 +8,48 @@ const portfolioItems = [
     type: "Fitness coaching",
     icon: "pulse",
     description: "A conversion-focused coaching site with clear offers, mobile-first sections, and a strong request flow.",
+    metric: "Coach lead flow",
+    accent: "Fitness brand",
   },
   {
     title: "Exam Progress Tracker",
     type: "Simple web app",
     icon: "chart",
     description: "A focused study tracker concept for tutors and students to monitor milestones, notes, and progress.",
+    metric: "Student progress",
+    accent: "Tutor tool",
   },
   {
     title: "AG Fitness Concept",
     type: "Gym concept",
     icon: "bolt",
     description: "A bold gym landing page direction built around class discovery, trainer trust, and quick contact.",
+    metric: "Gym launch page",
+    accent: "Local business",
   },
 ];
 
 const services = [
   {
     name: "Landing Page",
-    price: "From $20",
+    price: "$20+",
     icon: "spark",
     copy: "A clean one-page site for a launch, offer, class, or personal brand.",
+    points: ["Hero + offer", "Mobile layout", "Contact action"],
   },
   {
     name: "Business Website",
-    price: "From $50",
+    price: "$50+",
     icon: "grid",
     copy: "A polished multi-section presence for small teams, service brands, and local businesses.",
+    points: ["Home sections", "Service pages", "Trust blocks"],
   },
   {
     name: "Simple Web App",
-    price: "From $80",
+    price: "$80+",
     icon: "app",
     copy: "A lightweight interactive tool, tracker, booking flow, or internal dashboard.",
+    points: ["Custom flow", "Simple data", "Clean UI"],
   },
 ];
 
@@ -108,6 +117,7 @@ function App() {
   }, [form]);
 
   const encodedRequest = encodeURIComponent(requestMessage);
+  const logoUrl = `${import.meta.env.BASE_URL}quietbuild-dp.png`;
   const whatsappUrl = `https://wa.me/94XXXXXXXXX?text=${encodedRequest}`;
   const emailUrl = `mailto:quietbuildstudio@example.com?subject=${encodeURIComponent(
     "Project request for QuietBuild Studio",
@@ -122,7 +132,9 @@ function App() {
     <main>
       <nav className="site-nav" aria-label="Main navigation">
         <a className="brand-mark" href="#home" aria-label="QuietBuild Studio home">
-          <span>QB</span>
+          <span className="logo-frame">
+            <img src={logoUrl} alt="" />
+          </span>
           QuietBuild Studio
         </a>
         <div className="nav-links">
@@ -236,13 +248,34 @@ function App() {
         <div className="card-grid">
           {portfolioItems.map((item) => (
             <article className="portfolio-card" key={item.title}>
-              <div className="card-icon">
-                <Icon name={item.icon} />
+              <div className="project-preview" aria-hidden="true">
+                <div className="project-browser">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div className="project-screen">
+                  <div className="project-glow" />
+                  <div className="project-panel-main">
+                    <div className="project-icon">
+                      <Icon name={item.icon} />
+                    </div>
+                    <strong>{item.accent}</strong>
+                    <span>{item.metric}</span>
+                  </div>
+                  <div className="project-mini-row">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
               </div>
-              <p>{item.type}</p>
-              <h3>{item.title}</h3>
-              <span aria-hidden="true" className="card-line" />
-              <p>{item.description}</p>
+              <div className="portfolio-content">
+                <p>{item.type}</p>
+                <h3>{item.title}</h3>
+                <span aria-hidden="true" className="card-line" />
+                <p>{item.description}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -263,6 +296,11 @@ function App() {
                 <h3>{service.name}</h3>
                 <p>{service.copy}</p>
               </div>
+              <ul className="service-points">
+                {service.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
               <strong>{service.price}</strong>
             </article>
           ))}
@@ -280,6 +318,11 @@ function App() {
 
         <div className="contact-layout">
           <form className="request-form">
+            <div className="dashboard-strip" aria-hidden="true">
+              <span>Project brief</span>
+              <span>Fast reply</span>
+              <span>Clean scope</span>
+            </div>
             <label>
               Business name
               <input
@@ -317,11 +360,23 @@ function App() {
               <span>Start here</span>
               <strong>Tell us what you need</strong>
             </div>
+            <div className="contact-stats" aria-label="Project request details">
+              <div>
+                <span>Best for</span>
+                <strong>Small brands</strong>
+              </div>
+              <div>
+                <span>Style</span>
+                <strong>Premium clean</strong>
+              </div>
+            </div>
             <div className="button-stack">
               <a className="button primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+                <span className="button-icon">WA</span>
                 WhatsApp Request
               </a>
               <a className="button secondary" href={emailUrl}>
+                <span className="button-icon">EM</span>
                 Email Request
               </a>
             </div>
