@@ -240,88 +240,136 @@ function App() {
         </div>
       </section>
 
-      <section className="section-band content-section" id="work">
-        <div className="section-heading">
-          <p className="eyebrow">Work / Portfolio</p>
-          <h2>Recent website and app concepts</h2>
-        </div>
-        <div className="card-grid">
-          {portfolioItems.map((item) => (
-            <article className="portfolio-card" key={item.title}>
-              <div className="project-preview" aria-hidden="true">
-                <div className="project-browser">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="project-screen">
-                  <div className="project-glow" />
-                  <div className="project-panel-main">
-                    <div className="project-icon">
-                      <Icon name={item.icon} />
+      <section className="premium-section work-section" id="work">
+        <div className="section-band section-inner">
+          <div className="section-heading premium-heading">
+            <p className="eyebrow">Work / Portfolio</p>
+            <h2>Premium digital previews for small brands</h2>
+            <p>
+              Portfolio concepts shaped around strong first impressions, clear offers, and fast project requests.
+            </p>
+          </div>
+          <div className="premium-work-grid">
+            {portfolioItems.map((item) => (
+              <article className="portfolio-card premium-portfolio-card" key={item.title}>
+                <div className="project-preview" aria-hidden="true">
+                  <div className="project-browser">
+                    <span />
+                    <span />
+                    <span />
+                    <div />
+                  </div>
+                  <div className="project-screen">
+                    <div className="project-glow" />
+                    <div className="project-panel-main">
+                      <div className="project-icon">
+                        <Icon name={item.icon} />
+                      </div>
+                      <strong>{item.accent}</strong>
+                      <span>{item.metric}</span>
                     </div>
-                    <strong>{item.accent}</strong>
-                    <span>{item.metric}</span>
-                  </div>
-                  <div className="project-mini-row">
-                    <span />
-                    <span />
-                    <span />
+                    <div className="project-data-card">
+                      <span>Launch focus</span>
+                      <strong>{item.type}</strong>
+                    </div>
+                    <div className="project-mini-row">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="portfolio-content">
-                <p>{item.type}</p>
-                <h3>{item.title}</h3>
-                <span aria-hidden="true" className="card-line" />
-                <p>{item.description}</p>
-              </div>
-            </article>
-          ))}
+                <div className="portfolio-content">
+                  <p>{item.type}</p>
+                  <h3>{item.title}</h3>
+                  <span aria-hidden="true" className="card-line" />
+                  <p>{item.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-band content-section" id="services">
-        <div className="section-heading">
-          <p className="eyebrow">Services</p>
-          <h2>Small builds with a clean finish</h2>
-        </div>
-        <div className="card-grid services-grid">
-          {services.map((service) => (
-            <article className="service-card" key={service.name}>
-              <div>
-                <div className="card-icon">
-                  <Icon name={service.icon} />
+      <section className="premium-section services-section" id="services">
+        <div className="section-band section-inner">
+          <div className="section-heading premium-heading">
+            <p className="eyebrow">Services</p>
+            <h2>Clear packages with premium presentation</h2>
+            <p>Simple pricing for brands that need a sharp web presence without a complicated agency process.</p>
+          </div>
+          <div className="pricing-grid">
+            {services.map((service) => (
+              <article className="service-card pricing-card" key={service.name}>
+                <div className="pricing-top">
+                  <div className="card-icon">
+                    <Icon name={service.icon} />
+                  </div>
+                  <span className="pricing-label">QuietBuild package</span>
                 </div>
                 <h3>{service.name}</h3>
+                <strong>{service.price}</strong>
                 <p>{service.copy}</p>
-              </div>
-              <ul className="service-points">
-                {service.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <strong>{service.price}</strong>
-            </article>
-          ))}
+                <ul className="service-points">
+                  {service.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <a className="pricing-action" href="#contact">
+                  Request this
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-band contact-section" id="contact">
-        <div className="section-heading">
-          <p className="eyebrow">Contact</p>
-          <h2>Send a project request</h2>
-          <p>
-            Share the basics and use the request buttons to open WhatsApp or email with your details already included.
-          </p>
-        </div>
+      <section className="premium-section contact-section" id="contact">
+        <div className="section-band section-inner contact-layout">
+          <div className="contact-copy">
+            <p className="eyebrow">Contact</p>
+            <h2>Ready to build something clean?</h2>
+            <p>
+              Share the basics and use the request buttons to open WhatsApp or email with your details already included.
+            </p>
 
-        <div className="contact-layout">
-          <form className="request-form">
-            <div className="dashboard-strip" aria-hidden="true">
-              <span>Project brief</span>
-              <span>Fast reply</span>
-              <span>Clean scope</span>
+            <div className="social-list" aria-label="Social links">
+              {socialLinks.map((link) => (
+                <a href={link.href} key={link.label} target="_blank" rel="noreferrer">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="contact-stats" aria-label="Project request details">
+              <div>
+                <span>Best for</span>
+                <strong>Gyms, coaches, tutors, small businesses</strong>
+              </div>
+              <div>
+                <span>Studio style</span>
+                <strong>Premium, fast, mobile-friendly</strong>
+              </div>
+            </div>
+
+            <div className="button-stack">
+              <a className="button primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+                <span className="button-icon">WA</span>
+                WhatsApp Request
+              </a>
+              <a className="button secondary" href={emailUrl}>
+                <span className="button-icon">EM</span>
+                Email Request
+              </a>
+            </div>
+
+            <p className="contact-note">quietbuildstudio@example.com</p>
+          </div>
+
+          <form className="request-form white-request-card">
+            <div className="form-heading">
+              <span>Project request</span>
+              <strong>Tell us what you need</strong>
             </div>
             <label>
               Business name
@@ -353,44 +401,15 @@ function App() {
                 onChange={updateField}
               />
             </label>
-          </form>
-
-          <aside className="contact-card">
-            <div className="contact-card-head">
-              <span>Start here</span>
-              <strong>Tell us what you need</strong>
-            </div>
-            <div className="contact-stats" aria-label="Project request details">
-              <div>
-                <span>Best for</span>
-                <strong>Small brands</strong>
-              </div>
-              <div>
-                <span>Style</span>
-                <strong>Premium clean</strong>
-              </div>
-            </div>
-            <div className="button-stack">
+            <div className="form-actions">
               <a className="button primary" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <span className="button-icon">WA</span>
-                WhatsApp Request
+                Send on WhatsApp
               </a>
-              <a className="button secondary" href={emailUrl}>
-                <span className="button-icon">EM</span>
-                Email Request
+              <a className="button secondary dark-text-button" href={emailUrl}>
+                Send by Email
               </a>
             </div>
-
-            <div className="social-list" aria-label="Social links">
-              {socialLinks.map((link) => (
-                <a href={link.href} key={link.label} target="_blank" rel="noreferrer">
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            <p className="contact-note">quietbuildstudio@example.com</p>
-          </aside>
+          </form>
         </div>
       </section>
     </main>
